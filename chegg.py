@@ -1,4 +1,4 @@
-import random
+imported random
 
 def rollDice(sides):
     d=random.randint(1,sides)
