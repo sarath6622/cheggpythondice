@@ -83,8 +83,8 @@ def main():
         else: 
             print("Its a TIE!")
 
-    print("\Player 1 won {} points".format(p1_wins))
-    print("\Player 2 won {} points".format(p2_wins))
+    print("\nPlayer 1 won {} points".format(p1_wins))
+    print("\nPlayer 2 won {} points".format(p2_wins))
     if p1_wins>p2_wins:
         print("\nPlayer 1 won the game.")
     elif p1_wins<p2_wins:
