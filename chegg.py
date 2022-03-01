@@ -1,4 +1,4 @@
-imported random
+import random
 
 def rollDice(sides):
     d=random.randint(1,sides)
@@ -30,15 +30,13 @@ def play_one_turn():
     print("You rolled:",d1,d2,d3)
     return d1,d2,d3
 
-def reRoll(dice,d1,d2,d3):
+def reRoll(d1,d2,d3):
     d1=rollDice(sides)
     d2=rollDice(sides)
     d3=rollDice(sides)
-    again = input("\nDo you like to roll again (y/n)?")
-    if again=='y' or again =='yes':
-        dice=int(input("WHich dice do you want to re-roll? You can choose 1,2 or 3."))
+    dice=int(input("Which dice do you want to re-roll? You can choose 1,2 or 3."))
 
-    elif dice==1:
+    if dice==1:
         nD1 = rollDice(sides)
         print("You rolled:",nD1)
         score=calculate_score(nD1,d2,d3)
@@ -54,13 +52,11 @@ def reRoll(dice,d1,d2,d3):
         nD3 = rollDice(sides)
         print("You rolled:",nD3)
         score=calculate_score(nD1,d2,nD3)
-        print("\nTOtal score:",score) 
-
-    elif again=="n" or again=="no":
-        print("\nTotal Score:",score)
+        print("\nTotal score:",score) 
     
     else:
         print("\nTotal score:",score)
+    return score
 
 def main():
     print("Welcome to TOTALITY, rolling dice game! The goal is to get the highest number possible in the three dice, \nbut dice with same value are multipilied together! Points are totaled after the final round and the winner will be declared! Enjoy!")
@@ -70,6 +66,10 @@ def main():
         print("\nRound #{}".format(r))
         print("\nPlayer 1 its your turn")
         p1_points=play_one_turn()
+        again = input("\nDo you like to roll again (y/n)?")
+        if again=='y' or again =='yes':
+            p1_points=reRoll()
+
         print("\nPlayer 2 its your turn")
         p2_points=play_one_turn()
         if p1_points>p2_points:
